@@ -18,7 +18,7 @@ export default {
       password,
       database,
       entities: [
-        path.resolve(__dirname, '..', '..', '..', '**', 'entites', '*'),
+        path.resolve(__dirname, '..', '..', '..', '..', '**', 'entites', '*'),
       ],
       synchronize: false,
       migrations: ['./dist/migrations/*'],

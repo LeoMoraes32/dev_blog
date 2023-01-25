@@ -15,7 +15,7 @@ async function bootstrap() {
   // Enable cors
   app.enableCors();
 
-  await app.listen(APP_PORT);
   setupSwagger(app);
+  await app.listen(APP_PORT);
 }
 bootstrap();

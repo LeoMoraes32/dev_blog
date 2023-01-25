@@ -16,7 +16,9 @@ export default new DataSource({
   username,
   password,
   database,
-  entities: [path.resolve(__dirname, '..', '..', '..', '**', 'entites', '*')],
+  entities: [
+    path.resolve(__dirname, '..', '..', '..', '..', '**', 'entites', '*'),
+  ],
   synchronize: false,
   migrations: ['./src/migrations/*'],
 });
