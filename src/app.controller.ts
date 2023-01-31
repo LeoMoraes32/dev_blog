@@ -5,6 +5,7 @@ import { Response } from 'express';
 export class AppController {
   @Get()
   public async healthcheck(@Res() res: Response) {
+    console.log('deu bom');
     return res.status(HttpStatus.OK).send('Tudo Okay');
   }
 }

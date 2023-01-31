@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import 'dotenv/config';
 import * as path from 'path';
+import { UserEntity } from 'src/users/entities/UserEntity';
 
 export default {
   useFactory: async (): Promise<TypeOrmModuleOptions> => {
@@ -17,9 +18,12 @@ export default {
       username,
       password,
       database,
-      entities: [
-        path.resolve(__dirname, '..', '..', '..', '..', '**', 'entites', '*'),
-      ],
+      // entities: [
+      //   path.resolve(__dirname, '..', '..', '..', '..', '**', 'entites', '*'),
+      // ],
+      entities: [path.resolve(__dirname, '..', '..', '**', 'entities', '*')],
+      // entities: [UserEntity],
+      //entities: [path.resolve(__dirname, './src/*/entities/*.{ts,js}')],
       synchronize: false,
       migrations: ['./dist/migrations/*'],
     };

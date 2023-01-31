@@ -16,6 +16,7 @@ export default {
   username,
   password,
   database,
+  //entities: [path.resolve(__dirname, './src/*/entities/*.{ts,js}')],
   entities: ['./src/*/entities/*'],
   // entities: [
   //   path.resolve(__dirname, '..', '..', '..', '..', '**', 'entites', '*'),
@@ -24,7 +25,7 @@ export default {
   migrations: ['./src/migrations/*'],
   cli: {
     migrationsDir: './src/migrations',
-    entitiesDir: './src/*/entities/*',
+    entitiesDir: [path.resolve(__dirname, './src/*/entities/*')],
     // entitiesDir: path.resolve(
     //   __dirname,
     //   '..',
