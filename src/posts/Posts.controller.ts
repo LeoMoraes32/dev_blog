@@ -9,7 +9,7 @@ export class PostsController {
   constructor(private postsService: PostsService) {}
 
   @Post()
-  async createPost(@Body() post: CreatePostDTO) {
+  async createPost(@Body() post: CreatePostDTO): Promise<void> {
     return await this.postsService.createPost(post);
   }
 }

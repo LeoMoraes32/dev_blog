@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
+import { UserEntity } from 'src/users/entities/UserEntity';
 
 class CreatePostDTO {
   @IsNotEmpty()
@@ -13,8 +19,8 @@ class CreatePostDTO {
   body: string;
 
   @IsNotEmpty()
+  @IsNumber()
   @ApiProperty({ required: true })
-  @ValidateNested()
   userId: number;
 }
 export { CreatePostDTO };
