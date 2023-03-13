@@ -1,7 +1,9 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 import { setupSwagger } from './docs/swagger/index';
+import { AllExceptionsFilter } from './utils/HTTPExceptionsFilter';
 
 async function bootstrap() {
   const APP_PORT = Number(process.env.APP_PORT);
@@ -12,10 +14,15 @@ async function bootstrap() {
   // Set global prefix
   app.setGlobalPrefix(APP_GLOBAL_PREFIX);
 
+  // Set global filters(ERRORS)
+  app.useGlobalFilters(new AllExceptionsFilter());
+
   // Enable cors
   app.enableCors();
 
-  await app.listen(APP_PORT);
   setupSwagger(app);
+  app.useGlobalPipes(new ValidationPipe());
+
+  await app.listen(APP_PORT);
 }
 bootstrap();
